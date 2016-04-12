@@ -8,7 +8,13 @@ from django.utils.dates import MONTHS
 
 from django.forms.models import BaseInlineFormSet, ModelFormMetaclass
 from django.forms.models import inlineformset_factory
-from django.utils.datastructures import SortedDict
+try:
+  from django.utils.datastructures import SortedDict
+except ImportError:
+  # Support for Django > 1.8
+  from collections import OrderedDict
+
+
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
